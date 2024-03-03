@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "CloudFormation template for creating a DynamoDB table"
+
+Resources:
+  MyDynamoDBTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: MyTable
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S # S for string, N for number, B for binary
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH # HASH for partition key, RANGE for sort key
+      ProvisionedThroughput:
+        ReadCapacityUnits: 5 # Adjust according to your read requirements
+        WriteCapacityUnits: 5 # Adjust according to your write requirements
